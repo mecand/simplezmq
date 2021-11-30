@@ -1,0 +1,8 @@
+﻿  eatonclient1.cpp
+C:\Users\mehmet\source\repos\eatonclient1\eatonclient1\eatonclient1.cpp(41,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating code
+  166 of 4738 functions ( 3.5%) were compiled, the rest were copied from previous compilation.
+    3 functions were new in current compilation
+    35 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  eatonclient1.vcxproj -> C:\Users\mehmet\source\repos\eatonclient1\x64\Release\eatonclient1.exe
