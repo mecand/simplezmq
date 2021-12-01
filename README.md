@@ -92,10 +92,16 @@ socket.bind("tcp://*:5555");
 
 Parsing JSON data for each device and assignments with setters and getters operations are performed. 
 ```cpp
-string jsonDevDescriptor(string rawJSON)
-string jsonDevID(string rawJSON)
-unsigned int jsonDevTemperature(string rawJSON)
-unsigned int jsonDevPower(string rawJSON)
-unsigned int jsonDevHumidity(string rawJSON)
+string jsonDevDescriptor(string rawJSON);
+string jsonDevID(string rawJSON);
+unsigned int jsonDevTemperature(string rawJSON);
+unsigned int jsonDevPower(string rawJSON);
+unsigned int jsonDevHumidity(string rawJSON);
 ```
+
+## Video Demonstration
+
+You may find a demo video about implementation below. All modules tested, compiled and executed under **Release** configuration. 
+
+[![Video DEMO](https://img.youtube.com/vi/lNvJRxxXCf0/0.jpg)](https://www.youtube.com/watch?v=lNvJRxxXCf0)]
 
