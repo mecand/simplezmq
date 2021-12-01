@@ -1,8 +1,13 @@
 # EATON
-This repository aims to show Client and Server communication using JSON data format and ZeroMQ message broker with C++ in Windows 10.
+This repository aims to show Client and Server communication using JSON data format and ZeroMQ message broker with C++ in Windows 10. Connected device information visualized into EATONServer application through commandline interface. 
 
-In this project header only libraries are used. For each framework **vcpkg** packet manager is considered and with this dependencies are installed. 
+In this project header only libraries are used. For each framework **vcpkg** packet manager is considered and with this dependencies are installed. General approach for system flow and its diagram is shown below.
 
+![](https://raw.githubusercontent.com/mecand/eaton/main/UMLDiagrams/systemflowuml.png "System Flow Diagram")
+
+Both EATONClient and EATONServer modules software interactions are shown at below diagram. 
+
+![](https://raw.githubusercontent.com/mecand/eaton/main/UMLDiagrams/softwareflowuml.png "Software Flow Diagram")
 ## Installing Dependencies
 Execute the following commands to install **vcpkg** in your local environment:
 
@@ -50,7 +55,8 @@ Below function is used to generate random values for measurements.
 ```cpp
 int generateValue(int nMax, int nMin)
 ```
-In order to assign unique identifiers for each client, following assignments can be altered.
+In order to assign unique identifiers for each client, following assignments can be altered. Compilation process can be repeated to provide more Device executables and connections can be tested through multiple compilations of EATONClient project and their connection to EATONServer module. 
+
 ```cpp
 jsonClient["device_id"] = "000x";
 jsonClient["device_descriptor"] = "Devicex";
@@ -72,3 +78,24 @@ This Example Server Application for Monitoring Devices provides following operat
 - Counting message quantity for each device and printing them
 - Send "Success" message to clients
 - Singleton Creational pattern for device creation 
+
+DeviceController class is written for to handle operations for each device and it is based on Singleton Design Pattern. All class creation is implemented inside **DeviceController.h** file. For each instance received package is deserialized according to the package content. 
+
+```cpp
+	DeviceController* DeviceX = DeviceX->getInstance();
+```
+Constructing a Socket and binding to the interface
+```cpp
+zmq::socket_t socket{ context, zmq::socket_type::rep };
+socket.bind("tcp://*:5555");
+```
+
+Parsing JSON data for each device and assignments with setters and getters operations are performed. 
+```cpp
+string jsonDevDescriptor(string rawJSON)
+string jsonDevID(string rawJSON)
+unsigned int jsonDevTemperature(string rawJSON)
+unsigned int jsonDevPower(string rawJSON)
+unsigned int jsonDevHumidity(string rawJSON)
+```
+
